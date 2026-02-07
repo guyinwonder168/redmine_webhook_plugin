@@ -1,0 +1,70 @@
+<h2><%= l(:label_webhook_deliveries) %></h2>
+
+<%= form_tag admin_webhook_deliveries_path, method: :get do %>
+  <fieldset class="box tabular">
+    <legend><%= l(:label_filter_plural) %></legend>
+    <p>
+      <label><%= l(:label_webhook_endpoint) %></label>
+      <%= select_tag 'endpoint_id',
+          options_for_select(RedmineWebhookPlugin::Webhook::Endpoint.pluck(:name, :id),
+          params[:endpoint_id]),
+          include_blank: true %>
+    </p>
+    <p>
+      <label><%= l(:field_event_type) %></label>
+      <%= text_field_tag 'event_type', params[:event_type] %>
+    </p>
+    <p>
+      <label><%= l(:field_status) %></label>
+      <%= select_tag 'status',
+          options_for_select(RedmineWebhookPlugin::Webhook::Delivery::STATUSES.map { |s| [l("label_status_#{s}"), s] },
+          params[:status]),
+          include_blank: true %>
+    </p>
+    <p>
+      <label><%= l(:field_event_id) %></label>
+      <%= text_field_tag 'event_id', params[:event_id] %>
+    </p>
+    <p class="buttons">
+      <%= submit_tag l(:button_apply) %>
+      <%= link_to l(:button_clear), admin_webhook_deliveries_path, class: "icon icon-reload" %>
+    </p>
+  </fieldset>
+<% end %>
+
+ <%= form_tag bulk_replay_admin_webhook_deliveries_path, method: :post, id: 'bulk_replay_form' do %>
+   <div class="contextual">
+     <%= link_to l(:label_export_options), { format: :csv }, { class: "icon icon-add" } %>
+     <%= submit_tag l(:button_replay_selected), class: "button-small" %>
+   </div>
+
+  <table class="list webhook-deliveries">
+    <thead>
+      <tr>
+        <th class="checkbox"><%= check_box_tag 'check_all', 1, false, onclick: "toggleCheckboxesBySelector('#bulk_replay_form input[type=checkbox]:not(#check_all)')" %></th>
+        <th><%= l(:field_id) %></th>
+        <th><%= l(:label_webhook_endpoint) %></th>
+        <th><%= l(:field_event_type) %></th>
+        <th><%= l(:field_action) %></th>
+        <th><%= l(:field_status) %></th>
+        <th><%= l(:field_http_status) %></th>
+        <th><%= l(:field_created_at) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @deliveries.each do |delivery| %>
+        <tr>
+          <td class="checkbox"><%= check_box_tag 'ids[]', delivery.id, false, id: "ids_#{delivery.id}" %></td>
+          <td><%= link_to delivery.id, admin_webhook_delivery_path(delivery) %></td>
+          <td><%= delivery.endpoint_url %></td>
+          <td><%= delivery.event_type %></td>
+          <td><%= delivery.action %></td>
+          <td><%= l("label_status_#{delivery.status}") %></td>
+          <td><%= delivery.http_status %></td>
+          <td><%= format_time(delivery.created_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <span class="pagination"><%= pagination_links_full @delivery_pages, @delivery_count %></span>
+<% end %>

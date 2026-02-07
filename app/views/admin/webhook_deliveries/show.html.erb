@@ -1,0 +1,150 @@
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'admin_webhook_deliveries', plugin: 'redmine_webhook_plugin' %>
+<% end %>
+
+<h2><%= l(:label_webhook_delivery) %> #<%= @delivery.id %></h2>
+
+<div class="delivery-details box">
+
+  <!-- Status Header -->
+  <div class="delivery-header">
+    <h3><%= l(:label_webhook_delivery) %> Information</h3>
+    <div class="delivery-status">
+      <span class="status-badge status-<%= @delivery.status %>"><%= l("label_status_#{@delivery.status}").upcase %></span>
+    </div>
+  </div>
+
+  <!-- Endpoint Information -->
+  <% if @delivery.endpoint %>
+    <div class="endpoint-info">
+      <h4><%= l(:label_webhook_endpoint) %></h4>
+      <table class="info-table">
+        <tr>
+          <th><%= l(:field_name) %>:</th>
+          <td><%= @delivery.endpoint.name %></td>
+        </tr>
+        <tr>
+          <th><%= l(:field_url) %>:</th>
+          <td class="endpoint-url"><%= @delivery.endpoint.url %></td>
+        </tr>
+      </table>
+    </div>
+  <% else %>
+    <div class="endpoint-info">
+      <h4><%= l(:label_webhook_endpoint) %></h4>
+      <p class="warning"><%= l(:text_webhook_endpoint_deleted) %></p>
+      <% if @delivery.endpoint_url %>
+        <p><strong><%= l(:field_url) %>:</strong> <%= @delivery.endpoint_url %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <!-- Event Information -->
+  <div class="event-info">
+    <h4><%= l(:label_delivery_details_event) %></h4>
+    <table class="info-table">
+      <tr>
+        <th><%= l(:field_id) %>:</th>
+        <td><%= @delivery.event_id %></td>
+      </tr>
+      <tr>
+        <th><%= l(:field_event_type) %>:</th>
+        <td><%= @delivery.event_type %></td>
+      </tr>
+      <tr>
+        <th><%= l(:field_action) %>:</th>
+        <td><%= @delivery.action %></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Delivery Information -->
+  <div class="delivery-status-info">
+    <h4><%= l(:label_delivery_details_status) %></h4>
+    <table class="info-table">
+      <tr>
+        <th><%= l(:field_status) %>:</th>
+        <td><span class="status-badge status-<%= @delivery.status %>"><%= l("label_status_#{@delivery.status}").upcase %></span></td>
+      </tr>
+      <% if @delivery.http_status.present? %>
+        <tr>
+          <th><%= l(:field_http_status) %>:</th>
+          <td class="http-status"><%= @delivery.http_status %></td>
+        </tr>
+      <% end %>
+      <% if @delivery.duration_ms.present? %>
+        <tr>
+          <th><%= l(:label_duration) %>:</th>
+          <td class="duration"><%= @delivery.duration_ms %>ms</td>
+        </tr>
+      <% end %>
+      <tr>
+        <th><%= l(:label_attempts) %>:</th>
+        <td class="attempt-count"><%= @delivery.attempt_count %></td>
+      </tr>
+      <% if @delivery.error_code.present? %>
+        <tr>
+          <th><%= l(:label_error_code) %>:</th>
+          <td class="error-code"><%= @delivery.error_code %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th><%= l(:label_is_test) %>:</th>
+        <td><%= @delivery.is_test? ? l(:label_yes) : l(:label_no) %></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Timestamps -->
+  <div class="timestamps-info">
+    <h4>Timestamps</h4>
+    <table class="info-table">
+      <tr>
+        <th><%= l(:label_created_at_full) %>:</th>
+        <td><%= format_time(@delivery.created_at) %></td>
+      </tr>
+      <% if @delivery.scheduled_at.present? %>
+        <tr>
+          <th><%= l(:label_scheduled_at) %>:</th>
+          <td><%= format_time(@delivery.scheduled_at) %></td>
+        </tr>
+      <% end %>
+      <% if @delivery.delivered_at.present? %>
+        <tr>
+          <th><%= l(:label_delivered_at) %>:</th>
+          <td><%= format_time(@delivery.delivered_at) %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <th><%= l(:label_updated_at_full) %>:</th>
+        <td><%= format_time(@delivery.updated_at) %></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Response Body Excerpt -->
+  <% if @delivery.response_body_excerpt.present? %>
+    <div class="response-excerpt">
+      <h4><%= l(:label_response_body) %></h4>
+      <pre class="code"><%= h(@delivery.response_body_excerpt) %></pre>
+    </div>
+  <% end %>
+
+  <!-- Payload -->
+  <% if @delivery.payload.present? %>
+    <div class="payload-info">
+      <h4><%= l(:label_webhook_payload) %></h4>
+      <details>
+        <summary><%= l(:label_toggle_payload) %></summary>
+        <pre class="code"><%= h(@delivery.payload) %></pre>
+      </details>
+    </div>
+  <% end %>
+
+   <!-- Actions -->
+  <div class="actions">
+    <%= link_to l(:button_back), admin_webhook_deliveries_path, class: "icon icon-cancel" %>
+    <%= link_to l(:button_replay_delivery), replay_admin_webhook_delivery_path(@delivery), method: :post, class: "icon icon-reload", data: { confirm: l(:text_are_you_sure) } %>
+  </div>
+
+</div>

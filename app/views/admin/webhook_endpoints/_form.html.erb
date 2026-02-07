@@ -1,0 +1,57 @@
+<%= error_messages_for 'webhook_endpoint' %>
+
+<div class="box tabular">
+  <p><%= f.text_field :name, size: 60, required: true %></p>
+  <p><%= f.text_field :url, size: 60, required: true %></p>
+  <p><%= f.check_box :enabled %></p>
+  <p>
+    <%= f.select :payload_mode, [[l(:label_payload_minimal), "minimal"], [l(:label_payload_full), "full"]], {}, label: :field_payload_mode %>
+  </p>
+  <p>
+    <%= f.select :webhook_user_id,
+        options_from_collection_for_select(@users, :id, :name, f.object.webhook_user_id),
+        { include_blank: true, label: :field_webhook_user } %>
+  </p>
+  <p>
+    <%= label_tag "webhook_endpoint_project_ids", l(:field_project) %>
+    <%= select_tag "webhook_endpoint[project_ids][]",
+        options_from_collection_for_select(@projects, :id, :name, f.object.project_ids_array),
+        multiple: true, size: 10 %>
+    <br><em><%= l(:text_webhook_projects_hint) %></em>
+  </p>
+</div>
+
+<div class="box">
+  <fieldset>
+    <legend><%= l(:label_webhook_events) %></legend>
+    <p><strong><%= l(:label_issue_plural) %></strong></p>
+    <label><%= check_box_tag "events[issue][created]", "1", f.object.events_config.dig("issue", "created") %> <%= l(:label_webhook_event_created) %></label>
+    <label><%= check_box_tag "events[issue][updated]", "1", f.object.events_config.dig("issue", "updated") %> <%= l(:label_webhook_event_updated) %></label>
+    <label><%= check_box_tag "events[issue][deleted]", "1", f.object.events_config.dig("issue", "deleted") %> <%= l(:label_webhook_event_deleted) %></label>
+
+    <p><strong><%= l(:label_time_entry_plural) %></strong></p>
+    <label><%= check_box_tag "events[time_entry][created]", "1", f.object.events_config.dig("time_entry", "created") %> <%= l(:label_webhook_event_created) %></label>
+    <label><%= check_box_tag "events[time_entry][updated]", "1", f.object.events_config.dig("time_entry", "updated") %> <%= l(:label_webhook_event_updated) %></label>
+    <label><%= check_box_tag "events[time_entry][deleted]", "1", f.object.events_config.dig("time_entry", "deleted") %> <%= l(:label_webhook_event_deleted) %></label>
+  </fieldset>
+</div>
+
+<div class="box">
+  <fieldset>
+    <legend><%= l(:label_webhook_retry) %></legend>
+    <p><%= label_tag "retry_max_attempts", l(:field_retry_max_attempts) %><br>
+      <%= number_field_tag "retry[max_attempts]", f.object.retry_config["max_attempts"] || 5, min: 1 %></p>
+    <p><%= label_tag "retry_base_delay", l(:field_retry_base_delay) %><br>
+      <%= number_field_tag "retry[base_delay]", f.object.retry_config["base_delay"] || 60, min: 1 %></p>
+    <p><%= label_tag "retry_max_delay", l(:field_retry_max_delay) %><br>
+      <%= number_field_tag "retry[max_delay]", f.object.retry_config["max_delay"] || 3600, min: 1 %></p>
+  </fieldset>
+
+  <fieldset>
+    <legend><%= l(:label_webhook_request_options) %></legend>
+    <p><%= label_tag "webhook_endpoint_timeout", l(:field_timeout) %><br>
+      <%= number_field_tag "webhook_endpoint[timeout]", f.object.timeout || 30, min: 1 %></p>
+    <p><%= label_tag "webhook_endpoint_ssl_verify", l(:field_ssl_verify) %><br>
+      <%= check_box_tag "webhook_endpoint[ssl_verify]", "1", f.object.ssl_verify != false %></p>
+  </fieldset>
+</div>

@@ -1,0 +1,15 @@
+ARG RUBY_VERSION=3.2.2
+FROM docker.io/library/ruby:${RUBY_VERSION}-bookworm
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  build-essential git curl ca-certificates \
+  libsqlite3-dev sqlite3 \
+  libxml2-dev libxslt1-dev \
+  libffi-dev libyaml-dev libreadline-dev zlib1g-dev libssl-dev pkg-config \
+  nodejs \
+  && rm -rf /var/lib/apt/lists/*
+
+ENV BUNDLE_PATH=/bundle
+WORKDIR /redmine

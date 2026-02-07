@@ -1,0 +1,113 @@
+#admin-menu a.icon-webhook,
+#admin-menu li.icon-webhook > a,
+.icon-webhook {
+  background-image: url('../images/icon-webhook.svg');
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
+  background-size: 14px 14px;
+  padding-left: 22px;
+}
+
+#admin-menu a.icon-webhook-deliveries,
+#admin-menu li.icon-webhook-deliveries > a,
+.icon-webhook-deliveries,
+.icon-deliveries {
+  background-image: url('../images/icon-webhook-deliveries.svg');
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
+  background-size: 14px 14px;
+  padding-left: 22px;
+}
+
+.icon-test {
+  background-image: url('../images/icon-test.svg');
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
+  background-size: 14px 14px;
+  padding-left: 22px;
+}
+
+.icon-toggle {
+  background-image: url('../images/icon-toggle.svg');
+  background-repeat: no-repeat;
+  background-position: 4px 50%;
+  background-size: 14px 14px;
+  padding-left: 22px;
+}
+
+@supports ((-webkit-mask-image: url("")) or (mask-image: url(""))) {
+  #admin-menu a.icon-webhook,
+  #admin-menu li.icon-webhook > a,
+  #admin-menu a.icon-webhook-deliveries,
+  #admin-menu li.icon-webhook-deliveries > a,
+  .icon-webhook,
+  .icon-webhook-deliveries,
+  .icon-deliveries,
+  .icon-test,
+  .icon-toggle {
+    position: relative;
+    background-image: none !important;
+  }
+
+  #admin-menu a.icon-webhook::before,
+  #admin-menu li.icon-webhook > a::before,
+  .icon-webhook::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+    background-color: currentColor;
+    -webkit-mask: url('../images/icon-webhook.svg') no-repeat center / 14px 14px;
+    mask: url('../images/icon-webhook.svg') no-repeat center / 14px 14px;
+  }
+
+  #admin-menu a.icon-webhook-deliveries::before,
+  #admin-menu li.icon-webhook-deliveries > a::before,
+  .icon-webhook-deliveries::before,
+  .icon-deliveries::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+    background-color: currentColor;
+    -webkit-mask: url('../images/icon-webhook-deliveries.svg') no-repeat center / 14px 14px;
+    mask: url('../images/icon-webhook-deliveries.svg') no-repeat center / 14px 14px;
+  }
+
+  .icon-test::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+    background-color: currentColor;
+    -webkit-mask: url('../images/icon-test.svg') no-repeat center / 14px 14px;
+    mask: url('../images/icon-test.svg') no-repeat center / 14px 14px;
+  }
+
+  .icon-toggle::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    transform: translateY(-50%);
+    background-color: currentColor;
+    -webkit-mask: url('../images/icon-toggle.svg') no-repeat center / 14px 14px;
+    mask: url('../images/icon-toggle.svg') no-repeat center / 14px 14px;
+  }
+}
+
+/* Fix for settings alignment */
+.tabular p label {
+  /* Redmine defaults usually work fine */
+}

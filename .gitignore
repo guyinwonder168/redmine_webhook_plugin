@@ -1,0 +1,37 @@
+.bundle/
+.tmp/
+.ruby-gemset
+.ruby-version
+.idea/
+.vscode/
+.DS_Store
+*.swp
+# Opencode
+.opencode/
+
+# Ruby / Bundler
+Gemfile.lock
+vendor/bundle/
+coverage/
+
+# Test Infrastructure (local artifacts) - Added 2026-01-05
+.redmine-test/
+.bundle-cache/
+logs/
+.work/
+.worktrees/
+
+# Redmine sources (if accidentally copied to plugin dir)
+redmine-*/
+
+# Test databases
+*.sqlite3*
+
+# Container artifacts
+.tmp/
+
+# Exclude the continuity.md as that is for context reminder
+CONTINUITY.md
+
+# Local wiki clone (publish later)
+redmine_webhook_plugin.wiki/

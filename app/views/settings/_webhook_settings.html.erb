@@ -1,0 +1,31 @@
+<div class="tabular">
+  <p>
+    <label for="settings_execution_mode"><%= l(:label_execution_mode) %></label>
+    <%= select_tag "settings[execution_mode]",
+          options_for_select([
+            [l(:label_execution_mode_auto), "auto"],
+            [l(:label_execution_mode_activejob), "activejob"],
+            [l(:label_execution_mode_db_runner), "db_runner"]
+          ], @settings["execution_mode"]),
+          id: "settings_execution_mode" %>
+  </p>
+
+  <p>
+    <label for="settings_retention_days_success"><%= l(:label_retention_success_days) %></label>
+    <%= text_field_tag "settings[retention_days_success]", @settings["retention_days_success"],
+          id: "settings_retention_days_success", size: 6 %>
+  </p>
+
+  <p>
+    <label for="settings_retention_days_failed"><%= l(:label_retention_failed_days) %></label>
+    <%= text_field_tag "settings[retention_days_failed]", @settings["retention_days_failed"],
+          id: "settings_retention_days_failed", size: 6 %>
+  </p>
+
+  <p>
+    <label for="settings_deliveries_paused"><%= l(:label_deliveries_paused) %></label>
+    <%= hidden_field_tag "settings[deliveries_paused]", "0" %>
+    <%= check_box_tag "settings[deliveries_paused]", "1", @settings["deliveries_paused"] == "1",
+          id: "settings_deliveries_paused" %>
+  </p>
+</div>

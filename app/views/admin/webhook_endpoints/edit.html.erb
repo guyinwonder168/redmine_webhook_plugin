@@ -1,0 +1,6 @@
+<h2><%= l(:label_webhook_endpoint_edit) %></h2>
+
+<%= labelled_form_for :webhook_endpoint, @endpoint, url: admin_webhook_endpoint_path(@endpoint), html: { method: :patch } do |f| %>
+  <%= render partial: "form", locals: { f: f, endpoint: @endpoint } %>
+  <p><%= submit_tag l(:button_save) %></p>
+<% end %>

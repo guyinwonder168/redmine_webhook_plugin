@@ -1,0 +1,42 @@
+stages:
+  - test
+
+default:
+  interruptible: true
+
+variables:
+  GIT_STRATEGY: none
+  PLUGIN_DIRNAME: "redmine_webhook_plugin"
+  REDMINE_DIR: "/redmine"
+  CLONE_DIR: "/redmine/plugins"
+  BUNDLE_JOBS: "4"
+  BUNDLE_RETRY: "3"
+
+.redmine_compat_template:
+  stage: test
+  before_script:
+    - cd ${CLONE_DIR}
+    - if [ -z "$CI_REPOSITORY_URL" ]; then git clone -b ${CI_COMMIT_BRANCH} "${CI_SERVER_URL}/${CI_PROJECT_PATH}.git"; else git clone -b ${CI_COMMIT_BRANCH} "$CI_REPOSITORY_URL"; fi
+    - pwd
+    - ruby -v
+    - bundle -v
+  script:
+    - ./redmine_webhook_plugin/tools/ci/run_redmine_compat.sh
+
+redmine_compat_5_1_1:
+  extends: .redmine_compat_template
+  image: "registry.example.com/devops/redmine-plug:5.1.1"
+  tags:
+    - redmine-webhook
+
+redmine_compat_5_1_10:
+  extends: .redmine_compat_template
+  image: "registry.example.com/devops/redmine-plug:5.1.10"
+  tags:
+    - redmine-webhook
+
+redmine_compat_6_1_0:
+  extends: .redmine_compat_template
+  image: "registry.example.com/devops/redmine-plug:6.1.0"
+  tags:
+    - redmine-webhook
