@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Check for banned internal markers
+        run: |
+          if grep -RInE "1rstwap|firstwap|gitlab\\.1rstwap\\.com|harbor\\.1rstwap\\.com" . \
+            --exclude-dir=.git \
+            --exclude=.github/workflows/ci.yml; then
+            echo "Internal markers found."
+            exit 1
+          fi
+
+      - name: Ruby syntax check
+        run: |
+          while IFS= read -r file; do
+            ruby -c "$file"
+          done < <(git ls-files '*.rb')
+
+      - name: Shell syntax check
+        run: |
+          while IFS= read -r file; do
+            bash -n "$file"
+          done < <(git ls-files '*.sh')
+
+      - name: Validate docs links and key files exist
+        run: |
+          test -f README.md
+          test -f CONTRIBUTING.md
+          test -f SECURITY.md
+          test -f CHANGELOG.md

@@ -29,7 +29,7 @@ case "$REDMINE_VERSION" in
 esac
 
 # Docker image name
-IMAGE_NAME="registry.example.com/devops/redmine-plug:${REDMINE_VERSION}"
+IMAGE_NAME="ghcr.io/guyinwonder168/redmine-plug:${REDMINE_VERSION}"
 
 # Generate a temporary Dockerfile
 DOCKERFILE=$(mktemp)

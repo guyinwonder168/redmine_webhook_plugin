@@ -111,7 +111,7 @@ ${BLUE}Dummy Projects (--seed flag):${NC}
   • Marketing Website (marketing-web)
   • Mobile App (mobile-app)
   • API Services (api-services)
-  • Internal Tools (internal-tools)
+  • Ops Tools (ops-tools)
   • Documentation (docs)
 
   These projects are available for selection in webhook endpoints.

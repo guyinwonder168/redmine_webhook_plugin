@@ -37,12 +37,12 @@ When uninstalling:
 sudo ./installer/install.sh -d /var/www/redmine -R -u www-data
 ```
 
-### Install from GitLab Release
+### Install from GitHub Release
 
 ```bash
 # Download specific release
 sudo ./installer/install.sh -d /var/www/redmine \
-  -s https://git.example.com/your-org/redmine_webhook_plugin/-/archive/v1.0.0-RC.tar.gz \
+  -s https://github.com/guyinwonder168/redmine_webhook_plugin/archive/refs/tags/v1.0.0-RC.tar.gz \
   -R -u www-data
 ```
 
@@ -252,8 +252,8 @@ Test thoroughly before production use:
 
 ## Support
 
-- **Documentation:** https://git.example.com/your-org/redmine_webhook_plugin/-/releases/v1.0.0-RC
-- **Issues:** https://git.example.com/your-org/redmine_webhook_plugin/-/issues
+- **Documentation:** https://github.com/guyinwonder168/redmine_webhook_plugin/releases/tag/v1.0.0-RC
+- **Issues:** https://github.com/guyinwonder168/redmine_webhook_plugin/issues
 - **AGENTS.md:** Developer guide for this plugin
 
 ## Version History

@@ -1,0 +1,27 @@
+name: Feature request
+description: Propose an enhancement.
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What problem are you trying to solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: textarea
+    id: impact
+    attributes:
+      label: Compatibility / migration impact
+      description: Note any impact across Redmine 5.1.0 / 5.1.10 / 6.1.0 / 7.0.0-dev.

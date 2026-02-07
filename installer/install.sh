@@ -36,7 +36,7 @@ Install Redmine Webhook Plugin to a Redmine installation.
 
 OPTIONS:
     -d, --redmine-dir PATH     Path to Redmine installation (required)
-    -s, --source PATH|URL     Plugin source: local path or GitLab URL
+    -s, --source PATH|URL     Plugin source: local path or GitHub URL
     -b, --backup DIR          Backup directory (default: ./backups/timestamp)
     -B, --skip-backup        Skip backup before installation
     -M, --skip-migrations     Skip database migrations
@@ -53,8 +53,8 @@ EXAMPLES:
     # Install from local source with backup
     $0 -d /var/www/redmine -s /path/to/plugin -b /backup
 
-    # Install from GitLab release
-    $0 -d /var/www/redmine -s https://gitlab.com/example/redmine_webhook_plugin/-/archive/v1.0.0-RC.tar.gz
+    # Install from GitHub release
+    $0 -d /var/www/redmine -s https://github.com/guyinwonder168/redmine_webhook_plugin/archive/refs/tags/v1.0.0-RC.tar.gz
 
     # Full installation with restart
     $0 -d /var/www/redmine -R -u www-data
@@ -305,7 +305,7 @@ print_summary() {
     echo "3. Configure webhook endpoints in Administration > Webhook Endpoints"
     echo "4. Monitor webhook deliveries in Administration > Webhook Deliveries"
     echo ""
-    echo "Documentation: https://git.example.com/your-org/redmine_webhook_plugin/-/releases/v1.0.0-RC"
+    echo "Documentation: https://github.com/guyinwonder168/redmine_webhook_plugin/releases/tag/v1.0.0-RC"
     echo ""
 }
 

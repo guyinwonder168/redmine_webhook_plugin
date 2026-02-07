@@ -149,10 +149,10 @@ For production deployments, use the provided installer script:
 
 ```bash
 # Download release
-wget https://git.example.com/your-org/redmine_webhook_plugin/-/archive/v1.0.0-RC1/redmine_webhook_plugin-v1.0.0-RC1.tar.gz
+wget https://github.com/guyinwonder168/redmine_webhook_plugin/archive/refs/tags/v1.0.0-RC1.tar.gz
 
 # Extract
-tar -xzf redmine_webhook_plugin-v1.0.0-RC1.tar.gz
+tar -xzf v1.0.0-RC1.tar.gz
 
 # Install
 cd redmine_webhook_plugin
@@ -161,7 +161,7 @@ sudo ./installer/install.sh -d /var/www/redmine -R -u www-data
 
 **Installer Options:**
 - `-d, --redmine-dir`: Redmine installation path (required)
-- `-s, --source`: Plugin source or GitLab URL
+- `-s, --source`: Plugin source or GitHub URL
 - `-b, --backup`: Backup directory
 - `-B, --skip-backup`: Skip backup
 - `-M, --skip-migrations`: Skip DB migrations
@@ -174,7 +174,7 @@ sudo ./installer/install.sh -d /var/www/redmine -R -u www-data
 ```bash
 # Clone or extract to Redmine plugins directory
 cd /path/to/redmine/plugins
-git clone https://git.example.com/your-org/redmine_webhook_plugin.git
+git clone https://github.com/guyinwonder168/redmine_webhook_plugin.git
 # OR
 tar -xzf plugin.tar.gz
 
@@ -1106,8 +1106,8 @@ CREATE TABLE webhook_deliveries (
 
 ### Getting Help
 
-- **Issues:** https://git.example.com/your-org/redmine_webhook_plugin/-/issues
-- **Documentation:** https://git.example.com/your-org/redmine_webhook_plugin
+- **Issues:** https://github.com/guyinwonder168/redmine_webhook_plugin/issues
+- **Documentation:** https://github.com/guyinwonder168/redmine_webhook_plugin
 - **AGENTS.md:** Developer guide
 
 ### Additional Resources

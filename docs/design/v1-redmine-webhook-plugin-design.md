@@ -259,7 +259,7 @@ Admin-only pages:
 
 ## Compatibility verification (CI)
 
-Compatibility is enforced via a GitLab CI matrix across supported Redmine versions using **prebaked images** (offline runner friendly).
+Compatibility is enforced via a CI matrix across supported Redmine versions using GitHub Actions and local/container runners.
 
-- CI config: `.gitlab-ci.yml`
+- CI config: `.github/workflows/ci.yml`
 - Runner: `tools/ci/run_redmine_compat.sh` (uses `REDMINE_DIR=/redmine` in prebaked mode)

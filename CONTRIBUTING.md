@@ -8,13 +8,13 @@ This repository is intended for public collaboration.
 
 - Docs index: [docs/README.md](docs/README.md)
 - Development guide: [docs/development.md](docs/development.md)
-- Testing guide: [docs/testing.md](docs/testing.md)
+- Testing guide: [docs/testing-guide.md](docs/testing-guide.md)
 
 ## Workflow
 
 - Create a feature branch from `main` (or the current integration branch if agreed):
   - `feat/...`, `fix/...`, `chore/...`
-- Open a merge request / pull request and request review.
+- Open a pull request and request review.
 - Prefer small, focused MRs.
 
 ## Development workflow (summary)
@@ -51,8 +51,8 @@ tools/dev/start-redmine.sh 5.1.0
 
 ## CI compatibility matrix
 
-GitLab CI verifies compatibility by running this plugin’s test suite against multiple Redmine versions using **prebaked images** (the runner is offline).
+GitHub Actions is the public CI entrypoint for repository checks.
 
-- CI config: `.gitlab-ci.yml`
-- Runner script: `tools/ci/run_redmine_compat.sh`
-- If supported versions change, update `.gitlab-ci.yml` and the docs accordingly.
+- CI config: `.github/workflows/ci.yml`
+- Release automation: `.github/workflows/release.yml`
+- Local compatibility runner: `tools/ci/run_redmine_compat.sh`

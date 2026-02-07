@@ -397,7 +397,7 @@ This plugin provides outbound HTTP webhooks for key Redmine objects with deliver
 
 ## 8) Compatibility verification (CI)
 
-Compatibility is enforced via a GitLab CI version matrix that runs against **prebaked Redmine images** (offline runner friendly). At minimum, the matrix must include:
+Compatibility is enforced via CI matrix testing across supported Redmine versions (GitHub Actions + local/container runners). At minimum, the matrix must include:
 
 - Redmine **5.1.0** (minimum supported)
 - Redmine **5.1.10** (representative 5.1 line image)

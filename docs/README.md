@@ -19,7 +19,7 @@
 
 Self-contained workflow for running Redmine plugin tests against multiple Redmine versions. The repo manages Redmine sources under `.redmine-test/` and gem caches under `.bundle-cache/`. Podman remains optional for containerized runs.
 
-**For comprehensive testing guidance** (including manual UI testing and browser testing), see [Podman Testing Guide](podman-testing-guide.md).
+**For comprehensive testing guidance** (including manual UI testing and browser testing), see [Testing Guide](testing-guide.md).
 
 **Redmine 7.0+ note:** Native webhooks exist in trunk; when present, the plugin remains authoritative and disables or bypasses native delivery to avoid duplicates.
 

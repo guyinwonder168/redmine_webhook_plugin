@@ -7,7 +7,7 @@ projects_data = [
   { name: "Marketing Website", identifier: "marketing-web", description: "Company marketing website and landing pages" },
   { name: "Mobile App", identifier: "mobile-app", description: "iOS and Android mobile application" },
   { name: "API Services", identifier: "api-services", description: "REST API endpoints and microservices" },
-  { name: "Internal Tools", identifier: "internal-tools", description: "Developer tools and dashboards" },
+  { name: "Ops Tools", identifier: "ops-tools", description: "Developer tools and dashboards" },
   { name: "Documentation", identifier: "docs", description: "Project documentation and wikis" }
 ]
 

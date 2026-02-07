@@ -14,6 +14,12 @@ All notable changes to this project will be documented in this file.
    - Updated contributor/author text in public-facing metadata and documentation.
    - Added `redmine_webhook_plugin.wiki/` to `.gitignore` so wiki content can be published separately later.
    - Removed local-only artifacts from this working copy (`.redmine-test/`, `.bundle-cache/`, `.opencode/`, `.work/`, `logs/`, and temporary screenshot files).
+- **chore(github): bootstrap open-source GitHub repository flow**
+   - Added GitHub community health files and templates (`.github/ISSUE_TEMPLATE/*`, `.github/pull_request_template.md`, `CODE_OF_CONDUCT.md`).
+   - Added GitHub Actions workflows for CI and tag-based releases (`.github/workflows/ci.yml`, `.github/workflows/release.yml`).
+   - Added Dependabot configuration (`.github/dependabot.yml`).
+   - Updated installer/docs links to the public GitHub repository and release URLs.
+   - Updated project license to MIT for open-source distribution.
 
 ### Fixed
  - **fix(ui): alignment and icons improvements**

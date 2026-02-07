@@ -254,7 +254,7 @@ When starting with `--seed` flag, 5 dummy projects are automatically created for
 - Marketing Website (marketing-web)
 - Mobile App (mobile-app)
 - API Services (api-services)
-- Internal Tools (internal-tools)
+- Ops Tools (ops-tools)
 - Documentation (docs)
 
 **Why Use Dummy Data:**
@@ -409,7 +409,7 @@ Go to: **Administration → Webhook Endpoints**
   - Marketing Website (marketing-web)
   - Mobile App (mobile-app)
   - API Services (api-services)
-  - Internal Tools (internal-tools)
+  - Ops Tools (ops-tools)
   - Documentation (docs)
 
 **Events:**
@@ -815,7 +815,7 @@ This will create 5 dummy projects using `db/seeds.rb`:
 - Marketing Website
 - Mobile App
 - API Services
-- Internal Tools
+- Ops Tools
 - Documentation
 
 #### Issue: Webhook delivery not received

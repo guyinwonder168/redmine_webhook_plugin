@@ -31,8 +31,8 @@ Outbound webhook configuration for Redmine issues and time entries.
 - **Delivery System**:
   - robust delivery engine with selectable Execution Modes:
     - **Auto**: Automatically selects the best available method.
-    - **ActiveJob**: Uses Redmine's ActiveJob (presieves background workers).
-    - **DB Runner**: Internal database-backed queue runner.
+    - **ActiveJob**: Uses Redmine's ActiveJob (preserves background workers).
+    - **DB Runner**: Database-backed queue runner.
   - Automatic retries with exponential backoff.
   - "Replay" capability for failed or successful deliveries (single and bulk).
   - CSV Export of delivery history (recent 1000 records).
@@ -140,16 +140,16 @@ VERSION=7.0.0-dev tools/test/run-integration-test.sh
 
 - Docs index: [docs/README.md](docs/README.md)
 - Development guide: [docs/development.md](docs/development.md)
-- Testing guide: [docs/testing.md](docs/testing.md)
-- Manual browser testing: [docs/manual_browser_testing.md](docs/manual_browser_testing.md)
+- Testing guide: [docs/testing-guide.md](docs/testing-guide.md)
 - PRD (v1.0.0): [docs/redmine-webhook-plugin-prd-v100.md](docs/redmine-webhook-plugin-prd-v100.md)
 - Design (v1): [docs/design/v1-redmine-webhook-plugin-design.md](docs/design/v1-redmine-webhook-plugin-design.md)
 - Development plan (v1): [docs/plans/v1-redmine-webhook-plugin-development-plan.md](docs/plans/v1-redmine-webhook-plugin-development-plan.md)
 - Admin UI wireframes (v1): [docs/UIUX/v1-redmine-webhook-plugin-wireframes.md](docs/UIUX/v1-redmine-webhook-plugin-wireframes.md)
+- Wiki: [GitHub Wiki](https://github.com/guyinwonder168/redmine_webhook_plugin/wiki)
 
 ## Contributing
 
-See `CONTRIBUTING.md` for internal workflow and expectations.
+See `CONTRIBUTING.md` for contribution guidelines and development workflow.
 
 ## Security
 

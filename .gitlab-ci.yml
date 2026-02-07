@@ -25,18 +25,18 @@ variables:
 
 redmine_compat_5_1_1:
   extends: .redmine_compat_template
-  image: "registry.example.com/devops/redmine-plug:5.1.1"
+  image: "ghcr.io/guyinwonder168/redmine-plug:5.1.1"
   tags:
     - redmine-webhook
 
 redmine_compat_5_1_10:
   extends: .redmine_compat_template
-  image: "registry.example.com/devops/redmine-plug:5.1.10"
+  image: "ghcr.io/guyinwonder168/redmine-plug:5.1.10"
   tags:
     - redmine-webhook
 
 redmine_compat_6_1_0:
   extends: .redmine_compat_template
-  image: "registry.example.com/devops/redmine-plug:6.1.0"
+  image: "ghcr.io/guyinwonder168/redmine-plug:6.1.0"
   tags:
     - redmine-webhook

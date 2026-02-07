@@ -310,7 +310,7 @@ npx stylelint "app/assets/stylesheets/**/*.css"
 
 ### CI Checks
 
-**GitLab CI Configuration:**
+**GitHub Actions configuration:**
 ```yaml
 lint:
   script:
