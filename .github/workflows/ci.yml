@@ -19,9 +19,7 @@ jobs:
 
       - name: Check for banned internal markers
         run: |
-          if grep -RInE "1rstwap|firstwap|gitlab\\.1rstwap\\.com|harbor\\.1rstwap\\.com" . \
-            --exclude-dir=.git \
-            --exclude=.github/workflows/ci.yml; then
+          if git grep -nEi "1rstwap|firstwap|gitlab\\.1rstwap\\.com|harbor\\.1rstwap\\.com" -- ':!.github/workflows/ci.yml'; then
             echo "Internal markers found."
             exit 1
           fi
